@@ -1,0 +1,31 @@
+{
+	"name" : "syncgw/core-bundle",
+	"type" : "syncgw-bundle",
+	"license": "LGPL-3.0-or-later",
+	"homepage" : "https://github.com/syncgw/core-bundle",
+	"authors" : [{
+			"name" : "Florian Daeumling",
+			"homepage" : "https://github.com/toteph42"
+		}
+	],
+	"funding" : [{
+			"type" : "other",
+			"url" : "https://www.paypal.com/donate/?hosted_button_id=DS6VK49NAFHEQ"
+		}
+	],
+	"require" : {
+		"php" : ">=8.1",
+		"composer/composer" : ">=2.5.8",
+		"symfony/filesystem" : ">=6.3.1"
+	},
+	"autoload" : {
+		"psr-4" : {
+			"syncgw\\" : "src/"
+		}
+	},
+	"support" : {
+		"issues" : "https://github.com/syncgw/syncgw/issues",
+		"source" : "https://github.com/syncgw/core-bundle",
+		"docs" : "https://github.com/syncgw/core-bundle"
+	}
+}
