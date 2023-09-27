@@ -45,10 +45,11 @@ If you enjoy my software, I would be happy to receive a donation.
   <img src="https://www.paypalobjects.com/en_US/DK/i/btn/btn_donateCC_LG.gif" alt="Donate with PayPal"/>
 </a>
 
-[[Documentaion](../doc-bundle/README.md)]
-[[System requirements](../doc-bundle/PreReqs.md)] 
-[[Available bundles](../doc-bundle/Packages.md)] 
-[[List of all changes](../doc-bundle/Changes.md)] 
-[[Additional Downloads](../doc-bundle/Downloads.md)] 
-[[Frequently asked questions](../doc-bundle/FAQ.md)] 
-[[Supported feature](../doc-bundle/Features.md)]
+
+[[Documentation](https://github.com/syncgw/doc-bundle/blob/master/README.md)]
+[[System requirements](https://github.com/syncgw/doc-bundle/blob/master/PreReqs.md)] 
+[[Available bundles](https://github.com/syncgw/doc-bundle/blob/master/Packages.md)] 
+[[List of all changes](https://github.com/syncgw/doc-bundle/blob/master/Changes.md)] 
+[[Additional Downloads](https://github.com/syncgw/doc-bundle/blob/master/Downloads.md)] 
+[[Frequently asked questions](https://github.com/syncgw/doc-bundle/blob/master/FAQ.md)] 
+[[Supported feature](https://github.com/syncgw/doc-bundle/blob/master/Features.md)]
