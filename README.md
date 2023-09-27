@@ -1,4 +1,4 @@
-# ![picture logo](../gui-bundle/assets/syncgw.png "sync•gw") #
+# ![picture logo](https://github.com/syncgw/gui-bundle/assets/syncgw.png "sync•gw") #
  
 ![](https://img.shields.io/packagist/v/syncgw/core-bundle.svg)
 ![](https://img.shields.io/packagist/l/syncgw/core-bundle.svg)
@@ -30,7 +30,7 @@
 A detailed description of available configuration option is available in our browser interface documentation available in the [here](../doc-bundle/Downloads.md)).
 
 ## Installation ##
-This package is the **sync•gw core bundle**. To install please go to your web server base directory and enter
+To install the **sync•gw core bundle** please go to your web server base directory and enter
 
 ```bash
 composer require syncgw/core-bundle
