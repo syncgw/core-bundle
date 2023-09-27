@@ -1,4 +1,4 @@
-# ![picture logo](https://github.com/syncgw/gui-bundle/assets/syncgw.png "sync•gw") #
+# ![picture logo](https://github.com/syncgw/gui-bundle/blob/master/assets/syncgw.png "sync•gw") #
  
 ![](https://img.shields.io/packagist/v/syncgw/core-bundle.svg)
 ![](https://img.shields.io/packagist/l/syncgw/core-bundle.svg)
