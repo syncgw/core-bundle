@@ -7,7 +7,7 @@
 **sync•gw** is the one and only fully portable server software available providing synchronization service between nearly any mobile device and your web server.
 
 ## Core bundle for sync•gw ##
-In this bundle all **sync•gw** core classes were bundeles 
+This bundle contains all **sync•gw** core classes used by all other bundles.
 
 ## Installation ##
 To install the **sync•gw core bundle** please go to your web server base directory and enter
