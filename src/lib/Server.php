@@ -33,9 +33,9 @@ class Server {
 		'syncgw\\document\docMail',
 		'syncgw\\document\\field\\fldHandler',
 		'syncgw\\mapi\\Handler',
-		'syncgw\\mapi\\rpc\\Handler',
-		'syncgw\\mapi\ros\\pHandler',
-		'syncgw\\mapi\\ics\\Handler',
+		'syncgw\\rpc\\Handler',
+		'syncgw\\rops\\pHandler',
+		'syncgw\\ics\\Handler',
 	];
 
     /**
