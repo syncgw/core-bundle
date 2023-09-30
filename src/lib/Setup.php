@@ -24,8 +24,6 @@ class Setup {
 	 */
     public static function postInstall(Event $event) {
 
-    	echo ($event->isDevMode() ? 'yes' : 'no')."\n";
-
         $fs = new Filesystem();
         $path = 'vendor/syncgw/core-bundle/src/sync.php';
         $link = 'sync.php';
@@ -43,7 +41,6 @@ class Setup {
 	 */
     public static function postUninstall(PackageEvent $event) {
 
-    	var_dump($event->getOperations());
         $fs = new Filesystem();
     	$fs->remove('sync.php');
     }
