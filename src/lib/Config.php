@@ -14,6 +14,8 @@ namespace syncgw\lib;
 
 class Config {
 
+	const GITVER			= '9.19.80';					// syncgw version
+
 	const CONFIG            = 'Config.php';					// configuration file name
 
 	// configuration paremeters
@@ -31,7 +33,6 @@ class Config {
 	const SESSION_EXP		= 'SessionExp';					// session record expiration
 	const PHPERROR			= 'PHPError';					// capture PHP fatal errors
 	const ENABLED			= 'Datastores';					// enabled data stores
-	const UPGRADE			= 'Upgrade';					// update level
 	const DATABASE			= 'Database';					// data base connection
 
 	const MAXOBJSIZE        = 'MaxObjectSize';				// max. object size for DAV (e.g. attachments)
@@ -176,7 +177,7 @@ class Config {
 
             self::$_obj = new self();
 
-			// set default configuration definitions
+ 			// set default configuration definitions
 			// 0 VAL_TYP:  0 - String;  1 - Integer
 		 	// 1 VAL_DEF:  Default value
 			// 2 VAL_POSS: [ Possible values ]
@@ -186,7 +187,7 @@ class Config {
 		    // 6 VAL_SAVE: 1 - Save to .INI file
 			self::$_obj->_conf = [
 
-				self::ROOT				=> [ 0, $_SERVER['DOCUMENT_ROOT'].'/vendor/syncgw/', [], null, [], [], 0			],
+				self::ROOT				=> [ 0, $_SERVER['DOCUMENT_ROOT'].'/vendor/syncgw/', [], null, [], [], 0		],
 				self::ADMPW				=> [ 0, null, [], null, [], [], 1                                               ],
 				self::CRONJOB			=> [ 0, 'N', [ 'Y', 'N' ], 'CRONJOB', [], [], 1	                                ],
 				self::TRACE				=> [ 1, self::TRACE_OFF, [ self::TRACE_OFF, self::TRACE_ON, self::TRACE_FORCE,
@@ -206,8 +207,7 @@ class Config {
 			    self::MAXOBJSIZE        => [ 1, 1024000, [], 'MAXOBJSIZE', [], [], 1                                    ],
 			    self::ENABLED			=> [ 1, DataStore::DATASTORES, [], 'ENABLED', [], [], 1                         ],
 
-			    self::VERSION			=> [ 0, '1.0.1', [], 'VERSION', [], [], 0                                       ],
-				self::UPGRADE			=> [ 0, '0.00.00', [], 'UPGRADE', [], [], 1                                     ],
+			    self::VERSION			=> [ 0, self::GITVER, [], 'VERSION', [], [], 0              					],
 
 				self::TMP_DIR           => [ 0, null, [], null, [], [], 1                                               ],
 				self::EXECUTION			=> [ 1, 910, [], 'EXECUTION', [], [], 1											],
@@ -315,15 +315,10 @@ class Config {
 	 * 	Collect information about class
 	 *
 	 * 	@param 	- Object to store information
-     *	@param 	- true = Provide status information only (if available)
 	 */
-	public function getInfo(XML &$xml, bool $status): void {
+	public function getInfo(XML &$xml): void {
 
 		$xml->addVar('Name', 'Configuration handler');
-		$xml->addVar('Ver', strval(self::VER));
-
-		if ($status)
-			return;
 
 		$xml->addVar('Opt', 'INI file support');
 		$xml->addVar('Stat', 'Implemented');

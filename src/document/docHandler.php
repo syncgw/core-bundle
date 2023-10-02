@@ -53,27 +53,21 @@ class docHandler extends XML {
 	 * 	Collect information about class
 	 *
 	 * 	@param 	- Object to store information
-     *	@param 	- true = Provide status information only (if available)
 	 */
-	public function getInfo(XML &$xml, bool $status): void {
+	public function getInfo(XML &$xml): void {
 
-		$xml->addVar('Name', sprintf('%s document handler', Util::HID(Util::HID_ENAME, $this->_hid, true)));
+		$xml->addVar('Name', sprintf('%s document handler',
+					 Util::HID(Util::HID_ENAME, $this->_hid, true)));
 
-		if (!$status) {
+		$xml->addVar('Opt', 'Internal data store name');
+		$xml->addVar('Stat', '"'.Util::HID(Util::HID_ENAME, $this->_hid, true).'"');
 
-			$xml->addVar('Opt', 'Document base handler');
-
-			$xml->addVar('Opt', 'Internal data store name');
-			$xml->addVar('Stat', '"'.Util::HID(Util::HID_ENAME, $this->_hid, true).'"');
-		} else {
-
-			$xml->addVar('Opt', 'Status');
-			$xml->addVar('Stat', (Config::getInstance()->getVar(Config::ENABLED, true)
-								& $this->_hid) ? 'Enabled' : 'Disabled');
-		}
+		$xml->addVar('Opt', 'Status');
+		$xml->addVar('Stat', (Config::getInstance()->getVar(Config::ENABLED, true)
+							& $this->_hid) ? 'Enabled' : 'Disabled');
 
 		foreach($this->_mimeClass as $mime)
-			$mime->getInfo($xml, $status);
+			$mime->getInfo($xml);
 	}
 
 	/**

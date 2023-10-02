@@ -65,31 +65,27 @@ class Encoding extends XML {
 	 * 	Collect information about class
 	 *
 	 * 	@param 	- Object to store information
-     *	@param 	- true = Provide status information only (if available)
 	 */
-	public function getInfo(XML &$xml, bool $status): void {
+	public function getInfo(XML &$xml): void {
 
 		$xml->addVar('Name', 'Encoding handler');
 
-		if ($status) {
+		$xml->addVar('Opt', 'Internal encoding');
+		$xml->addVar('Stat', 'UTF-8');
 
-			$xml->addVar('Opt', 'Internal encoding');
-			$xml->addVar('Stat', 'UTF-8');
-		} else {
-			parent::xpath('//Charset/.');
-			while (parent::getItem() !== null) {
-				$pos = parent::savePos();
-				$cs = parent::getVar('Name', false);
-				$xml->addVar('Opt', sprintf('Character set "%s"', $cs));
+		parent::xpath('//Charset/.');
+		while (parent::getItem() !== null) {
+			$pos = parent::savePos();
+			$cs = parent::getVar('Name', false);
+			$xml->addVar('Opt', sprintf('Character set "%s"', $cs));
+			$xml->addVar('Stat', 'Implemented');
+
+			parent::xpath('../Alias/.', false);
+			while ($n = parent::getItem()) {
+				$xml->addVar('Opt', sprintf('Alias "%s" of character set "%s"', $n, $cs));
 				$xml->addVar('Stat', 'Implemented');
-
-				parent::xpath('../Alias/.', false);
-				while ($n = parent::getItem()) {
-					$xml->addVar('Opt', sprintf('Alias "%s" of character set "%s"', $n, $cs));
-					$xml->addVar('Stat', 'Implemented');
-				}
-				parent::restorePos($pos);
 			}
+			parent::restorePos($pos);
 		}
 	}
 

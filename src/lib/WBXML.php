@@ -151,18 +151,14 @@ class WBXML {
 		return self::$_obj;
 	}
 
-   /**
+   	/**
 	 * 	Collect information about class
 	 *
 	 * 	@param 	- Object to store information
-     *	@param 	- true = Provide status information only (if available)
 	 */
-	public function getInfo(XML &$xml, bool $status): void {
+	public function getInfo(XML &$xml): void {
 
     	$xml->addVar('Name', 'WBXML handler');
-
-		if ($status)
-			return;
 
 		$xml->addVar('Opt', '<a href="https://learn.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-aswbxml" target="_blank">[MS-ASWBXML]</a> '.
 				      'Exchange ActiveSync: WAP Binary XML (WBXML) Algorithm v23.0');

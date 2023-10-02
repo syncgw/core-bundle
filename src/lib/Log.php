@@ -151,29 +151,26 @@ class Log {
 	 * 	Collect information about class
 	 *
 	 * 	@param 	- Object to store information
-     *	@param 	- true = Provide status information only (if available)
-	 */
-	public function getInfo(XML &$xml, bool $status): void {
+ 	 */
+	public function getInfo(XML &$xml): void {
 
 		$xml->addVar('Name', 'Log handler');
-
-		if (!$status)
-			return;
 
 		$xml->addVar('Opt', 'Logging output send to');
 		$xml->addVar('Stat', '"'.Config::getInstance()->getVar(Config::LOG_DEST).'"');
 
 		$xml->addVar('Opt', 'Log level');
 		$stat = '';
-		if ($this->_loglvl & self::ERR)
+		$lvl  = Config::getInstance()->getVar(Config::LOG_LVL);
+		if ($lvl & self::ERR)
 			$stat .= self::MSG_TYP[self::ERR].' ';
-		if ($this->_loglvl & self::WARN)
+		if ($lvl & self::WARN)
 			$stat .= self::MSG_TYP[self::WARN].' ';
-		if ($this->_loglvl & self::INFO)
+		if ($lvl & self::INFO)
 			$stat .= self::MSG_TYP[self::INFO].' ';
-		if ($this->_loglvl & self::APP)
+		if ($lvl & self::APP)
 			$stat .= self::MSG_TYP[self::APP].' ';
-		if ($this->_loglvl & self::DEBUG)
+		if ($lvl & self::DEBUG)
 			$stat .= self::MSG_TYP[self::DEBUG].' ';
 		$xml->addVar('Stat', $stat);
 

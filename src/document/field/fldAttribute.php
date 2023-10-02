@@ -12,8 +12,6 @@ declare(strict_types=1);
 
 namespace syncgw\document\field;
 
-use syncgw\lib\XML;
-
 class fldAttribute extends fldHandler {
 
 	// ----------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -85,18 +83,7 @@ class fldAttribute extends fldHandler {
 		return self::$_obj;
 	}
 
-    /**
-	 * 	Collect information about class
-	 *
-	 * 	@param 	- Object to store information
-     *	@param 	- true = Provide status information only (if available)
-	 */
-	public function getInfo(XML &$xml, bool $status): void {
-
-		$xml->addVar('Opt', sprintf('&lt;%s&gt; field handler', self::TAG));
-	}
-
-	/**
+ 	/**
 	 * 	Convert string to attribute
 	 *
 	 * 	@param 	- Mailbox name

@@ -67,17 +67,6 @@ class Lock {
 		self::$_obj = null;
 	}
 
-    /**
-	 * 	Collect information about class
-	 *
-	 * 	@param 	- Object to store information
-     *	@param 	- true = Provide status information only (if available)
-	 */
-	public function getInfo(XML &$xml, bool $status): void {
-
-		$xml->addVar('Name', 'Locking handler');
-	}
-
 	/**
 	 *  Create lock
 	 *

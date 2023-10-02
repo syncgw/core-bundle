@@ -92,10 +92,10 @@ class fldURLs extends fldHandler {
 	 */
 	public function getInfo(XML &$xml, bool $status): void {
 
-		$xml->addVar('Opt', sprintf('&lt;%s&gt; field handler', 'FieldsURLs'));
+		$xml->addVar('Name', sprintf('&lt;%s&gt; field handler', 'FieldsURLs'));
 
 		foreach ([ fldURLHome::TAG, fldURLWork::TAG, fldURLOther::TAG] as $tag)
-			$xml->addVar('Opt', sprintf('&lt;%s&gt; field handler', $tag));
+			$xml->addVar('Name', sprintf('&lt;%s&gt; field handler', $tag));
 	}
 
 	/**

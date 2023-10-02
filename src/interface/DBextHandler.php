@@ -23,15 +23,7 @@ interface DBextHandler {
 	 */
 	public static function getInstance();
 
-   	/**
-	 * 	Collect information about class
-	 *
-	 * 	@param 	- Object to store information
-     *	@param 	- true = Provide status information only (if available)
-	 */
-	public function getInfo(XML &$xml, bool $status): void;
-
- 	/**
+  	/**
 	 * 	Authorize user in external data base
 	 *
 	 * 	@param	- User name

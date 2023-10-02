@@ -104,7 +104,9 @@ class HTTP {
 				self::HANDLER 	=> [],
 			];
 			foreach ([ 'syncgw\\gui\\guiHTTP', 'syncgw\\activesync\\masHTTP',
-					   'syncgw\\webdav\\davHTTP', 'syncgw\\mapi\\mapiHTTP' ] as $class)
+###					   'syncgw\\webdav\\davHTTP',
+
+			'syncgw\\mapi\\mapiHTTP' ] as $class)
 				if (class_exists($class))
 					self::$_http[self::HANDLER][] = $class::getInstance();
 			}
@@ -124,14 +126,10 @@ class HTTP {
 	 * 	Collect information about class
 	 *
 	 * 	@param 	- Object to store information
-     *	@param 	- true = Provide status information only (if available)
 	 */
-	public function getInfo(XML &$xml, bool $status): void {
+	public function getInfo(XML &$xml): void {
 
 		$xml->addVar('Name', 'HTTP handler');
-
-		if ($status)
-			return;
 
 		$xml->addVar('Opt', '<a href="http://tools.ietf.org/html/rfc2616" target="_blank">RFC2616</a> '.
 					  'Hypertext Trasfer Protocol -- HTTP/1.1 handler');

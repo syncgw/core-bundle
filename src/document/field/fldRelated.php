@@ -125,23 +125,7 @@ class fldRelated extends fldHandler {
 		return self::$_obj;
 	}
 
-    /**
-	 * 	Collect information about class
-	 *
-	 * 	@param 	- Object to store information
-     *	@param 	- true = Provide status information only (if available)
-	 */
-	public function getInfo(XML &$xml, bool $status): void {
-
-		$xml->addVar('Opt', sprintf('&lt;%s&gt; field handler', self::TAG));
-
-		foreach ([ fldAssistant::TAG, fldChild::TAG, fldManagerName::TAG,
-				   fldSpouse::TAG] as $tag) {
-			$xml->addVar('Opt', sprintf('&lt;%s&gt; field handler', $tag));
-		}
-	}
-
-	/**
+ 	/**
 	 * 	Import field
 	 *
 	 *  @param  - MIME type

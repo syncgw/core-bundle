@@ -14,26 +14,12 @@ namespace syncgw\document\field;
 
 use syncgw\lib\Msg;
 use syncgw\lib\Device;
-use syncgw\lib\Server;
 use syncgw\lib\Config;
 use syncgw\lib\XML;
 
 class fldHandler {
 
 	static protected $Deleted = [];
-
-    /**
-	 * 	Collect information about class
-	 *
-	 * 	@param 	- Object to store information
-     *	@param 	- true = Provide status information only (if available)
-	 */
-	public function getInfo(XML &$xml, bool $status): void {
-
-		$xml->addVar('Name', 'Field handler');
-
-		Server::getInstance()->getSupInfo($xml, $status, 'document\\field');
-	}
 
 	/**
 	 * 	Delete existing tag from record

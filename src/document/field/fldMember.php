@@ -66,21 +66,7 @@ class fldMember extends fldHandler {
 		return self::$_obj;
 	}
 
-    /**
-	 * 	Collect information about class
-	 *
-	 * 	@param 	- Object to store information
-     *	@param 	- true = Provide status information only (if available)
-	 */
-	public function getInfo(XML &$xml, bool $status): void {
-
-		$xml->addVar('Opt', sprintf('&lt;%s&gt; field handler'), 'Members');
-
-		foreach ([ fldGovernmentId::TAG, fldCustomerId::TAG, 'OtherId' ] as $tag)
-			$xml->addVar('Opt', sprintf('&lt;%s&gt; field handler', $tag));
-	}
-
-	/**
+ 	/**
 	 * 	Import field
 	 *
 	 *  @param  - MIME type

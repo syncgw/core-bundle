@@ -79,18 +79,13 @@ class ErrorHandler {
 	 * 	Collect information about class
 	 *
 	 * 	@param 	- Object to store information
-     *	@param 	- true = Provide status information only (if available)
 	 */
-	public function getInfo(XML &$xml, bool $status): void {
+	public function getInfo(XML &$xml): void {
 
 		$xml->addVar('Name', 'PHP Error handler');
 
-		if (!$status)
-			return;
-
-		$cnf = Config::getInstance();
 		$xml->addVar('Opt', 'Capture PHP error');
-		$xml->addVar('Stat', $cnf->getVar(Config::PHPERROR) == 'Y' ? 'Yes' : 'No');
+		$xml->addVar('Stat', Config::getInstance()->getVar(Config::PHPERROR) == 'Y' ? 'Yes' : 'No');
 	}
 
 	/**
@@ -184,13 +179,6 @@ class ErrorHandler {
 
 		if (!count($stack))
 			$stack = self::Stack();
-
-		// strip off file location
-		if ($p = strpos($errmsg, ' in ') && !strpos($errmsg, '(as in')) {
-
-			array_unshift($stack, '# '.substr($errmsg, $p + 4));
-			$errmsg = substr($errmsg, 0, $p);
-		}
 
 		// catch error messages
 		$recs = [ '+++ '.(isset(self::PHP_ERR[$typ]) ? self::PHP_ERR[$typ] : 'Exception').': '.$errmsg, ];

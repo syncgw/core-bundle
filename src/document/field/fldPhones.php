@@ -148,25 +148,7 @@ class fldPhones extends fldHandler {
 		return self::$_obj;
 	}
 
-    /**
-	 * 	Collect information about class
-	 *
-	 * 	@param 	- Object to store information
-     *	@param 	- true = Provide status information only (if available)
-	 */
-	public function getInfo(XML &$xml, bool $status): void {
-
-		$xml->addVar('Opt', sprintf('&lt;%s&gt; field handler'), 'Phones');
-
-		foreach ([ fldHomePhone::TAG, fldHomePhone2::TAG, fldHomeFax::TAG, fldBusinessPhone::TAG,
-				   fldBusinessPhone2::TAG, fldBusinessFax::TAG, fldCompanyPhone::TAG,
-				   fldAssistantPhone::TAG, fldPager::TAG, fldMobilePhone::TAG,
-				   fldCarPhone::TAG, fldMMSPhone::TAG, fldRadioPhone::TAG,
-				   fldVideoPhone::TAG, fldUmCallerID::TAG] as $tag)
-			$xml->addVar('Opt', sprintf('&lt;%s&gt; field handler', $tag));
-	}
-
-	/**
+ 	/**
 	 * 	Import field
 	 *
 	 *  @param  - MIME type

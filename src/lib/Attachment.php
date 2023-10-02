@@ -83,18 +83,12 @@ class Attachment extends XML {
 	 * 	Collect information about class
 	 *
 	 * 	@param 	- Object to store information
-     *	@param 	- true = Provide status information only (if available)
 	 */
-	public function getInfo(XML &$xml, bool $status): void {
+	public function getInfo(XML &$xml): void {
 
 		$xml->addVar('Name', 'Attachment handler');
-
-		if ($status) {
-
-			$cnf = Config::getInstance();
-			$xml->addVar('Opt', 'SabreDAV max. attachment size');
-			$xml->addVar('Stat', strval($cnf->getVar(Config::MAXOBJSIZE)));
-		}
+		$xml->addVar('Opt', 'SabreDAV max. attachment size');
+		$xml->addVar('Stat', strval(Config::getInstance()->getVar(Config::MAXOBJSIZE)));
 	}
 
 	/**

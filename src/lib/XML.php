@@ -162,18 +162,7 @@ class XML {
 		$this->_upd   = 0;
 	}
 
-   /**
-	 * 	Collect information about class
-	 *
-	 * 	@param 	- Object to store information
-     *	@param 	- true = Provide status information only (if available)
-	 */
-	public function getInfo(XML &$xml, bool $status): void {
-
-		$xml->addVar('Name', 'XML handler');
-	}
-
-	/**
+ 	/**
 	 * 	Get/Set update status
 	 *
 	 *	@param	- 0 = Read update counter; 1 = Increment counter; -1 = Reset counter

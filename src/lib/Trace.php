@@ -150,14 +150,10 @@ class Trace extends XML {
 	 * 	Collect information about class
 	 *
 	 * 	@param 	- Object to store information
-     *	@param 	- true = Provide status information only (if available)
 	 */
-	public function getInfo(XML &$xml, bool $status): void {
+	public function getInfo(XML &$xml): void {
 
 		$xml->addVar('Name', 'Trace handler');
-
-		if (!$status)
-			return;
 
 		$xml->addVar('Opt', 'Trace recording');
 		$cnf = Config::getInstance();

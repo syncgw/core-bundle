@@ -16,26 +16,17 @@ class Server {
 
 	// list of known handler
 	const HANDLER = [
-		'syncgw\\gui\\guiHandler',
 		'syncgw\\interface\\file\\Handler',
 		'syncgw\\interface\\mysql\\Handler',
 		'syncgw\\interface\\myapp\\Handler',
 		'syncgw\\interface\\roundcube\\Handler',
 		'syncgw\\interface\\mail\\Handler',
-		'syncgw\\activesync\Handler',
-		'syncgw\\webdav\\Handler',
-		'syncgw\\document\docContact',
-		'syncgw\\document\docCalendar',
-		'syncgw\\document\docTask',
-		'syncgw\\document\docNote',
-		'syncgw\\document\docGAL',
-		'syncgw\\document\docLib',
-		'syncgw\\document\docMail',
-		'syncgw\\document\\field\\fldHandler',
-		'syncgw\\mapi\\Handler',
-		'syncgw\\rpc\\Handler',
-		'syncgw\\rops\\pHandler',
-		'syncgw\\ics\\Handler',
+		'syncgw\\activesync\\masHandler',
+###		'syncgw\\webdav\\Handler',
+		'syncgw\\mapi\\mapiHandler',
+		'syncgw\\rpc\\rpcHandler',
+		'syncgw\\rops\\ropHandler',
+		'syncgw\\ics\\icsHandler',
 	];
 
     /**
@@ -64,11 +55,6 @@ class Server {
 			// allocate error handler
 			ErrorHandler::getInstance();
 
-			// set log message codes 10101-10200
-			Log::getInstance()->setLogMsg([
-					10101 => 'sync*gw not available for devices until upgrade of server has been performed',
-			]);
-
 			// register shutdown function on __destruct()
 			register_shutdown_function([ self::$_obj, 'shutDown' ]);
 		}
@@ -79,29 +65,27 @@ class Server {
     /**
 	 * 	Get information about handler class
      *
-     *	@param 	- TRUE = Provide status information only (if available)
      * 	@return	- XML object
 	 */
-	public function getInfo(bool $status): XML {
+	public function getInfo(): XML {
 
 		$xml = new XML();
 		$xml->addVar('syncgw');
 		$xml->addVar('Name', '<strong>sync&bull;gw</strong> server');
 
-		if (!$status) {
-
-			$xml->addVar('Opt', '<a href="http://www.iana.org/time-zones" target="_blank">IANA</a> Time zone data base source');
-			$xml->addVar('Stat', 'Implemented');
-		}
+		$xml->addVar('Name', '<a href="http://www.iana.org/time-zones" target="_blank">IANA</a> Time zone data base source');
+		$xml->addVar('Stat', 'Implemented');
 
 		// scan library classes
-		self::getSupInfo($xml, $status, 'lib', [ 'Server', ]);
+		self::getBundleInfo($xml, 'core-bundle/src/lib', 'lib', [ 'Server' ]);
+		// scan document classes
+		self::getBundleInfo($xml, 'core-bundle/src/document', 'document');
 
 		// show supporting classes
 		foreach (self::HANDLER as $class) {
 
 			if (class_exists($class) && method_exists($class, 'getInfo'))
-				$class::getInstance()->getInfo($xml, $status);
+				$class::getInstance()->getInfo($xml);
 		}
 
 		return $xml;
@@ -111,24 +95,25 @@ class Server {
 	 * 	Get information about supporting classes
      *
      *	@param 	- Output document
-     *	@param 	- TRUE = Check status; FALSE = Provide supported features
-     *	@param 	- Path to directory
+     *	@param 	- Bundle name
+     *	@param	- Associated class name
      *	@param 	- File exlision list
 	 */
-	public function getSupInfo(XML &$xml, bool $status, string $path, array $exclude = []): void {
+	public function getBundleInfo(XML &$xml, string $bundle, string $class, array $exclude = []): void {
 
 		// get supporting handler information
-		if ($d = opendir($dir = Config::getInstance()->getVar(Config::ROOT).$path)) {
+		if ($d = opendir($dir = Config::getInstance()->getVar(Config::ROOT).$bundle)) {
 
-			$path .= '\\';
-			while (($file = readdir($d)) !== FALSE) {
+			while (($file = readdir($d)) !== false) {
 
-				if (is_dir($dir.'/'.$file) || strpos($file, 'Handler') !== FALSE)
+				if (is_dir($dir.'/'.$file) || strpos($file, 'Handler') !== false)
 					continue;
 
 				$ex = 'ok';
 				foreach ($exclude as $ex) {
-					if (strpos($file, $ex) !== FALSE) {
+
+					if (strpos($file, $ex) !== false) {
+
 						$ex = NULL;
 						break;
 					}
@@ -137,10 +122,11 @@ class Server {
 					continue;
 
 				// strip off file extension
-				$class = 'syncgw\\'.$path.substr($file, 0, -4);
-				$class = method_exists($class, 'getInstance') ? $class::getInstance() : new $class();
-				if ($class && method_exists($class, 'getInfo'))
-					$class->getInfo($xml, $status);
+				$file = substr($file, 0, -4);
+				$obj  = 'syncgw\\'.$class.'\\'.$file;
+				$obj  = method_exists($obj, 'getInstance') ? $obj::getInstance() : new $obj();
+				if ($obj && method_exists($obj, 'getInfo'))
+					$obj->getInfo($xml);
 			}
 
 			closedir($d);
@@ -180,9 +166,9 @@ class Server {
 		// handle record expiration
 		global $argv;
 		if (($cron = $cnf->getVar(Config::CRONJOB)) == 'N' ||
-			(isset($argv[1]) && stripos($argv[1], 'cleanup') !== FALSE) ||
+			(isset($argv[1]) && stripos($argv[1], 'cleanup') !== false) ||
 			// special hack for PLESK
-			stripos($http->getHTTPVar('QUERY_STRING'), 'cleanup') !== FALSE) {
+			stripos($http->getHTTPVar('QUERY_STRING'), 'cleanup') !== false) {
 
 			$log->LogExpiration();
 			Session::getInstance()->Expiration();

@@ -107,22 +107,15 @@ class Session extends XML {
 	 * 	Collect information about class
 	 *
 	 * 	@param 	- Object to store information
-     *	@param 	- true = Provide status information only (if available)
 	 */
-	public function getInfo(XML &$xml, bool $status): void {
+	public function getInfo(XML &$xml): void {
 
 		$xml->addVar('Name', 'Session handler');
 
-		if ($status) {
-
-			$cnf = Config::getInstance();
-			$xml->addVar('Stat', strval($cnf->getVar(Config::SESSION_TIMEOUT)));
-			$xml->addVar('Opt', 'Session timeout (in seconds)');
-		} else {
-
-			$xml->addVar('Opt', 'Data base "Cookie" handler');
-			$xml->addVar('Stat', 'Implemented');
-		}
+		$xml->addVar('Opt', 'Session timeout (in seconds)');
+		$xml->addVar('Stat', strval(Config::getInstance()->getVar(Config::SESSION_TIMEOUT)));
+		$xml->addVar('Opt', 'Data base "Cookie" handler');
+		$xml->addVar('Stat', 'Implemented');
 	}
 
 	/**

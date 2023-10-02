@@ -72,7 +72,7 @@ class docMail extends docHandler {
     	if ($mod)
     		return;
 
-    	$xml->addVar('Opt', '<a href="https://tools.ietf.org/html/rfc6154" target="_blank">RFC6154</a> '.
+    	$xml->addVar('Name', '<a href="https://tools.ietf.org/html/rfc6154" target="_blank">RFC6154</a> '.
 				      'IMAP LIST Extension for Special-Use Mailboxes');
 		$xml->addVar('Stat', 'Implemented');
 	}

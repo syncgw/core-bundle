@@ -117,18 +117,7 @@ class DB implements DBintHandler, DBextHandler {
 		self::$_obj = null;
 	}
 
-    /**
-	 * 	Collect information about class
-	 *
-	 * 	@param 	- Object to store information
-     *	@param 	- true = Provide status information only (if available)
-	 */
-	public function getInfo(XML &$xml, bool $status): void {
-
-  		$xml->addVar('Name', 'Data base interface handler');
-	}
-
-	/**
+ 	/**
 	 * 	Authorize user in external data base
 	 *
 	 * 	@param	- User name

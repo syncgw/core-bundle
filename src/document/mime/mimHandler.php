@@ -47,11 +47,10 @@ class mimHandler extends XML {
 	 * 	Collect information about class
 	 *
 	 * 	@param 	- Object to store information
-     *	@param 	- true = Provide status information only (if available)
 	 */
-	public function getInfo(XML &$xml, bool $status): void {
+	public function getInfo(XML &$xml): void {
 
-		$xml->addVar('Opt', 'MIME type base handler');
+		$xml->addVar('Name', 'MIME type base handler');
 
 		foreach ($this->_mime as $mime)
 			$xml->addVar('Opt', sprintf('MIME type handler "%s %s"'), $mime[0],

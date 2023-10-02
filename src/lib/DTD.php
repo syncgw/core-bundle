@@ -55,7 +55,7 @@ class DTD extends XML {
 			// load all available DTD
 			$a = [];
 			$p = Config::getInstance()->getVar(Config::ROOT);
-			foreach ([ 'core-bundle/assets/', 'activesync-bundle/assets/', ] as $n) {
+			foreach ([ 'activesync-bundle/assets/', ] as $n) {
 
 				if (!($d = opendir($p.$n)))
 					continue;
@@ -82,6 +82,7 @@ class DTD extends XML {
 
 				if (!$wrk->loadFile($file))
 					return self::$_obj;
+
 				$wrk->getVar('CodePage');
 				self::$_obj->append($wrk);
 			}
@@ -94,18 +95,15 @@ class DTD extends XML {
 	 * 	Collect information about class
 	 *
 	 * 	@param 	- Object to store information
-     *	@param 	- true = Provide status information only (if available)
-	 */
-	public function getInfo(XML &$xml, bool $status): void {
+ 	 */
+	public function getInfo(XML &$xml): void {
 
 		$xml->addVar('Name', 'DTD handler');
-
-		if ($status)
-			return;
 
 		if (parent::xpath('//Header/.')) {
 
 			while (parent::getItem() !== null) {
+
 				$ip = parent::savePos();
 				$tag   = parent::getVar('Tag', false);
 				parent::restorePos($ip);
