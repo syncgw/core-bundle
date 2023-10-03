@@ -5,8 +5,11 @@
 	"license" : "LGPL-3.0-or-later",
     "repositories" : [{
             "type" : "composer",
-            "url" : "https://repo.packagist.org"
-    	}
+            "url" : "https://repo.packagist.org",
+  			"include" : [ 
+				"syncgw/core-bundle" 
+			]
+  	}
     ],
 	"homepage" : "https://github.com/syncgw/core-bundle",
 	"authors" : [{
