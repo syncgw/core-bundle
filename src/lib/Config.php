@@ -14,9 +14,7 @@ namespace syncgw\lib;
 
 class Config {
 
-	const GITVER			= '9.19.80';					// syncgw version
-
-	const CONFIG            = 'Config.php';					// configuration file name
+	const GITVER			= '9.19.80';					// sync*gw version
 
 	// configuration paremeters
 	const ROOT				= 'RootDirectry';				// root directory of syncgw project
@@ -149,6 +147,12 @@ class Config {
 	const DBG_PLEN   = 4;												// debug prefix length
 
 	/**
+	 * 	Configuration file name
+	 * 	@var string
+	 */
+	public $Path;
+
+	/**
 	 * 	Configuration definition array<fieldset>
 	 *	@var array
 	 */
@@ -275,6 +279,12 @@ class Config {
 				self::HANDLER			=> [ 0, null, [ null, 'MAS', 'MAS', 'DAV', 'GUI', 'MAPI', ], null, [], [], 0	],
 			];
 
+			// set config file name
+			if (file_exists($_SERVER['DOCUMENT_ROOT'].'/config/defaults.inc.php'))
+				self::$_obj->Path = $_SERVER['DOCUMENT_ROOT'].'/config/syncgw.php';
+			else
+				self::$_obj->Path = $_SERVER['DOCUMENT_ROOT'].'/syncgw.php';
+
 			// set temp. directory
 			if (!strlen(self::$_obj->_conf[self::TMP_DIR][self::VAL_DEF] = ini_get('upload_tmp_dir')))
 				self::$_obj->_conf[self::TMP_DIR][self::VAL_DEF] = sys_get_temp_dir();
@@ -334,9 +344,9 @@ class Config {
 		if (!$conf) {
 
             // load .INI file
-			if (file_exists($fnam = $this->_conf[self::ROOT][self::VAL_ORG].'core-bundle/assets/'.self::CONFIG)) {
+			if (file_exists($this->Path)) {
 
-				$c = @parse_ini_file($fnam);
+				$c = @parse_ini_file($this->Path);
 			} else
 			    $c = null;
 		} else
@@ -384,7 +394,6 @@ class Config {
 
 		// create new .ini file
 		$wrk  = ';<?php die(); ?>'."\n";
-		$fnam = $this->_conf[self::ROOT][self::VAL_ORG].'core-bundle/assets/'.self::CONFIG;
 
    		foreach ($this->_conf as $k => $v) {
 
@@ -393,15 +402,15 @@ class Config {
    			$wrk .= $k.' = "'.$v[self::VAL_CURR].'"'."\n";
 		}
 
-		if (file_exists($fnam) && !is_writeable($fnam)) {
+		if (file_exists($this->Path) && !is_writeable($this->Path)) {
 
-			Log::getInstance()->logMsg(Log::WARN, 10701, $fnam);
+			Log::getInstance()->logMsg(Log::WARN, 10701, $this->Path);
 			return false;
 		}
 
-		if (!file_put_contents($fnam, $wrk)) {
+		if (!file_put_contents($this->Path, $wrk)) {
 
-			Log::getInstance()->logMsg(Log::WARN, 10702, $fnam);
+			Log::getInstance()->logMsg(Log::WARN, 10702, $this->Path);
 			return false;
 		}
 
