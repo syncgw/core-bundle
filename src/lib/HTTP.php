@@ -103,10 +103,10 @@ class HTTP {
 				self::SND_HEAD	=> [ 'Response' => '', ],
 				self::HANDLER 	=> [],
 			];
-			foreach ([ 'syncgw\\gui\\guiHTTP', 'syncgw\\activesync\\masHTTP',
-###					   'syncgw\\webdav\\davHTTP',
-
-			'syncgw\\mapi\\mapiHTTP' ] as $class)
+			foreach ([ 'syncgw\\gui\\guiHTTP',
+					   'syncgw\\activesync\\masHTTP',
+					   'syncgw\\webdav\\davHTTP',
+					   'syncgw\\mapi\\mapiHTTP' ] as $class)
 				if (class_exists($class))
 					self::$_http[self::HANDLER][] = $class::getInstance();
 			}

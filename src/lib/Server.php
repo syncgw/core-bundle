@@ -22,7 +22,7 @@ class Server {
 		'syncgw\\interface\\roundcube\\Handler',
 		'syncgw\\interface\\mail\\Handler',
 		'syncgw\\activesync\\masHandler',
-###		'syncgw\\webdav\\Handler',
+		'syncgw\\webdav\\davHandler',
 		'syncgw\\mapi\\mapiHandler',
 		'syncgw\\rpc\\rpcHandler',
 		'syncgw\\rops\\ropHandler',

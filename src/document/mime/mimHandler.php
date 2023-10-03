@@ -50,11 +50,11 @@ class mimHandler extends XML {
 	 */
 	public function getInfo(XML &$xml): void {
 
-		$xml->addVar('Name', 'MIME type base handler');
+		foreach ($this->_mime as $mime) {
 
-		foreach ($this->_mime as $mime)
-			$xml->addVar('Opt', sprintf('MIME type handler "%s %s"'), $mime[0],
-							$mime[1] ? sprintf('%.1F', $mime[1]) : '');
+			$xml->addVar('Opt', sprintf('MIME type handler "%s"', $mime[0]));
+			$xml->addVar('Stat', $mime[1] ? sprintf('%.1F', $mime[1]) : '');
+		}
 	}
 
 	/**

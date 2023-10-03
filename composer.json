@@ -1,6 +1,11 @@
 {
 	"name" : "syncgw/core-bundle",
 	"description" : "sync•gw core bundle.",
+    "repositories" : [{
+            "type" : "composer",
+            "url" : "https://repo.packagist.org"
+    	}
+    ],
 	"type" : "syncgw-bundle",
 	"license" : "LGPL-3.0-or-later",
 	"homepage" : "https://github.com/syncgw/core-bundle",
