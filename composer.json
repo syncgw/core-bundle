@@ -6,6 +6,7 @@
     "repositories" : [{
             "type" : "composer",
             "url" : "https://repo.packagist.org",
+			"canonical" : false,
   			"include" : [ 
 				"composer/composer",
 				"syncgw/core-bundle" 
