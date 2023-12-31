@@ -22,7 +22,7 @@ class Setup {
 	/**
 	 * 	Initialaize symbolic links
 	 */
-    public static function postInstall(Event $event) {
+    public static function postInstall(PackageEvent $event) {
 
         $fs = new Filesystem();
         $path = 'vendor/syncgw/core-bundle/src/sync.php';
