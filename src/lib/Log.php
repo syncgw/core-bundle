@@ -52,6 +52,12 @@ class Log {
 	private $_dest		= self::UNDEF;
 
 	/**
+	 * 	Log file name
+	 * 	@var string
+	 */
+	private $_file 		= null;
+
+	/**
 	 * 	Filee / GUI pointer
 	 * 	@var object
 	 */

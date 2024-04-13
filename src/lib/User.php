@@ -201,7 +201,7 @@ class User extends XML {
 		parent::setVal(strval($n + 1));
 
 		// first time login?
-	    if (!$n && $cnf->getVar(Config::HANDLER) != 'GUI')
+	    if ($cnf->getVar(Config::HANDLER) != 'GUI')
    			$log->logMsg(Log::INFO|Log::ONETIME, 11002, $unam, $devname);
 
 		// is device changed?

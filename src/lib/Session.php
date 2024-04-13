@@ -61,9 +61,7 @@ class Session extends XML {
 			Log::getInstance()->setLogMsg([
 					10901 => 'Session [%s] started',
 					10902 => 'Session [%s] restarted',
-					10903 => 10902,
-					10904 => 'Session [%s] prolongated from [%s]',
-					10905 => 'Cleanup %d session records',
+					10903 => 'Cleanup %d session records',
 			]);
 
 			// create new session record
@@ -166,8 +164,6 @@ class Session extends XML {
 			// load record
 			parent::loadXML($xml->saveXML());
 
-			$log->logMsg(Log::DEBUG, 10902, $id);
-
 			return true;
 		}
 
@@ -178,8 +174,6 @@ class Session extends XML {
 
 			// load record
 			parent::loadXML($xml->saveXML());
-
-			$log->logMsg(Log::DEBUG, 10904, $oid, $id);
 
 			// rewrite new group record
 			parent::updVar('GUID', $id);
@@ -280,7 +274,7 @@ class Session extends XML {
 		$unused; // disable Eclipse warining
 
 		if ($cnt)
-			Log::getInstance()->logMsg(Log::DEBUG, 10905, $cnt);
+			Log::getInstance()->logMsg(Log::DEBUG, 10903, $cnt);
 	}
 
 }
