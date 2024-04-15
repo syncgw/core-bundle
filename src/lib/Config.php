@@ -14,7 +14,7 @@ namespace syncgw\lib;
 
 class Config {
 
-	const GITVER			= '9.19.83';					// sync*gw version
+	const GITVER			= '9.19.85';					// sync*gw version
 
 	// configuration paremeters
 	const ROOT				= 'RootDirectry';				// root directory of syncgw project

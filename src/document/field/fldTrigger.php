@@ -279,7 +279,7 @@ class fldTrigger extends fldHandler {
             		$val += $start - $end;
             	if ($val)
             		$val /= -60;
-            	$ext->addVar($tag, strval($val), false, $ext->setCP(XML::AS_CALENDAR));
+            	$ext->addVar($tag, strval(abs($val)), false, $ext->setCP(XML::AS_CALENDAR));
            		$rc = true;
             }
             break;
