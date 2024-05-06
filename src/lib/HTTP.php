@@ -358,8 +358,6 @@ class HTTP {
 	 */
 	public function checkIn(): int {
 
-		Msg::InfoMsg('Modify received header');
-
 		$cnf = Config::getInstance();
 
 		// convert server data to input header

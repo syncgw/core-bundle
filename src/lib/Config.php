@@ -14,7 +14,7 @@ namespace syncgw\lib;
 
 class Config {
 
-	const GITVER			= '9.19.85';					// sync*gw version
+	const GITVER			= '9.19.86';					// sync*gw version
 
 	// configuration paremeters
 	const ROOT				= 'RootDirectry';				// root directory of syncgw project
@@ -435,7 +435,6 @@ class Config {
 				if ($v[self::VAL_NAME])
 					$a['Config::'.$v[self::VAL_NAME]] = $this->_conf[$k][self::VAL_CURR];
 			}
-			Msg::InfoMsg($a, 'Get configuration definition array()');
 			return $a;
 		}
 
@@ -450,7 +449,6 @@ class Config {
 				Log::getInstance()->logMsg(Log::WARN, 10706, $id);
 				return null;
 			}
-			Msg::InfoMsg('['.$id.'] = "'.$this->_conf[$id][self::VAL_DEF].'"');
 			return $this->_conf[$id][self::VAL_DEF];
 		}
 

@@ -185,8 +185,6 @@ class Session extends XML {
 			// delete old master record
 			$db->Query(DataStore::SESSION, DataStore::DEL, $oid);
 
-    		$log->logMsg(Log::DEBUG, 10903, $id);
-
 			return true;
 		}
 
@@ -273,7 +271,7 @@ class Session extends XML {
 		}
 		$unused; // disable Eclipse warining
 
-		if ($cnt)
+		if ($cnt > 0)
 			Log::getInstance()->logMsg(Log::DEBUG, 10903, $cnt);
 	}
 

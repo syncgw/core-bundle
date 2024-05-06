@@ -35,10 +35,13 @@ class Msg {
 
     		if ($cnf->getVar(Config::DBG_SCRIPT))
 				$_gui = null;
-			else
+			elseif ($cnf->getVar(Config::HANDLER) == 'GUI')
 	            $_gui = class_exists($class = 'syncgw\\gui\\guiHandler') ?
 									 $class::getInstance() : null;
     	}
+
+    	if (is_int($_gui) && $_gui == -1)
+    		return;
 
         // check for class / functions exclusions from debugging
 		$call = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);
@@ -151,6 +154,7 @@ class Msg {
 	       				$hex .= '| ';
 	           	}
 	           	$msgs[] = $wrk.'  '.$hex.'  '.$str;
+
 	        } elseif (strpos(strval($obj), '<code') !== false)
 	        	$msgs = explode('<br>', $obj);
 	        else

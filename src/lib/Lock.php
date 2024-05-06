@@ -84,7 +84,7 @@ class Lock {
 
     			$err = error_get_last();
     			// special hack for windows
-    			if (stripos($err['message'], 'Permission denied') === false) {
+    			if (isset($err['message']) && stripos($err['message'], 'Permission denied') === false) {
 
 	    			Log::getInstance()->logMsg(Log::WARN, 11501, $path, $err['file'], $err['line'], $err['message']);
 				    return false;
