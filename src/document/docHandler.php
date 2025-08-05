@@ -5,7 +5,7 @@ declare(strict_types=1);
  * 	Document handler class
  *
  *	@package	sync*gw
- *	@copyright	(c) 2008 - 2024 Florian Daeumling, Germany. All right reserved
+ *	@copyright	(c) 2008 - 2025 Florian Daeumling, Germany. All right reserved
  * 	@license 	LGPL-3.0-or-later
  */
 
@@ -266,7 +266,7 @@ class docHandler extends XML {
 			return false;
 		}
 
-        // we try to lock to disable parallel execution
+        // we try to lock to disable paralel execution
 		if (!$lck->lock($lock = $http->getHTTPVar('REMOTE_ADDR').'-'.$http->getHTTPVar('User')))
 			return false;
 

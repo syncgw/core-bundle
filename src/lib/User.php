@@ -6,7 +6,7 @@ declare(strict_types=1);
  *
  * 	@package	sync*gw
  *	@subpackage	Core
- *	@copyright	(c) 2008 - 2024 Florian Daeumling, Germany. All right reserved
+ *	@copyright	(c) 2008 - 2025 Florian Daeumling, Germany. All right reserved
  * 	@license 	LGPL-3.0-or-later
  */
 
@@ -192,7 +192,7 @@ class User extends XML {
 		if (!$upw || !$db->Authorize($uid, $host, $upw)) {
 
 			if ($upw)
-    			$log->logMsg(Log::WARN, 11001, $unam, $devname);
+    			$log->logMsg(Log::WARN, 11001, $unam, ($devname ? $devname : 'localhost'));
 		    return false;
  		}
 
@@ -204,7 +204,7 @@ class User extends XML {
 	    if ($cnf->getVar(Config::HANDLER) != 'GUI')
    			$log->logMsg(Log::INFO|Log::ONETIME, 11002, $unam, $devname);
 
-		// is device changed?
+   		// is device changed?
 		if (!$devname || ($act = parent::getVar('ActiveDevice')) == $devname) {
 
 			Msg::InfoMsg('Device not changed');

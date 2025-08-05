@@ -5,7 +5,7 @@ declare(strict_types=1);
  * 	Connection handler class
  *
  *	@package	sync*gw
- *	@copyright	(c) 2008 - 2024 Florian Daeumling, Germany. All right reserved
+ *	@copyright	(c) 2008 - 2025 Florian Daeumling, Germany. All right reserved
  * 	@license 	LGPL-3.0-or-later
  *
  */
@@ -267,7 +267,7 @@ class HTTP {
 	 */
 	public function send(int $rc, string $reason = ''): void {
 
- 		// create HTTP status code
+		// create HTTP status code
 		// set default HTTP output
 		if (!isset(self::$_http[self::SERVER]['SERVER_PROTOCOL']))
 			self::$_http[self::SERVER]['SERVER_PROTOCOL'] = 'HTTP/1.1';
@@ -322,7 +322,7 @@ class HTTP {
 		        	return;
 		}
 
-	    // are we testing?
+		// are we testing?
 		if (Config::getInstance()->getVar(Config::DBG_SCRIPT))
 			return;
 
@@ -446,7 +446,6 @@ class HTTP {
 
         // debugging turned on?
 		if ($cnf->getVar(Config::DBG_LEVEL) == Config::DBG_TRACE) {
-
 
 			if (isset(self::$_http[self::RCV_HEAD]['User']))
 				self::$_http[self::RCV_HEAD]['User'] = $cnf->getVar(Config::DBG_USR);

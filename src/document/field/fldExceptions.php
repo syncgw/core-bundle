@@ -6,7 +6,7 @@ declare(strict_types=1);
  *
  *	@package	sync*gw
  *	@subpackage	Tag handling
- *	@copyright	(c) 2008 - 2024 Florian Daeumling, Germany. All right reserved
+ *	@copyright	(c) 2008 - 2025 Florian Daeumling, Germany. All right reserved
  * 	@license 	LGPL-3.0-or-later
  */
 
@@ -189,7 +189,7 @@ class fldExceptions extends fldHandler {
 						$rec['P']['VALUE'] = $var;
 					// store time
 					$int->addVar(self::SUB_TAG[2], Util::unxTime($val, $tzid), false, $rec['P']);
-						$int->addVar(self::SUB_TAG[1], null);
+					$int->addVar(self::SUB_TAG[1], null);
 					$rc = true;
 					$int->restorePos($ip1);
 				}

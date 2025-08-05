@@ -375,6 +375,7 @@ class Config {
 
 			ErrorHandler::resetReporting();
 			ErrorHandler::filter(E_WARNING, '', 'unlink');
+			ErrorHandler::filter(E_NOTICE, '', 'PHP Request Shutdown');
 		}
 
 		// rewrite config file?
