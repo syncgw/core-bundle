@@ -240,7 +240,7 @@ class Log {
 	 *  @Param  - Function name
 	 * 	@param	- Class object or null
 	 */
-	public function Plugin(string $func, $class = null): void {
+	public function Plugin(string $func, ?string $class = null): void {
 
 		$c = $class ? get_class($class) : '';
 		$k = $c.':'.$func;

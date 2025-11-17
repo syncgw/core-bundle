@@ -145,7 +145,7 @@ class HTTP {
 	 * 	@param	- Class object or null
 	 *  @Param  - Function name
 	 */
-	public function catchHTTP(string $func, $class = null): void {
+	public function catchHTTP(string $func, ?string $class = null): void {
 
 		$c = $class ? get_class($class) : '';
 		$k = $c.':'.$func;

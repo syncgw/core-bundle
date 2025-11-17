@@ -6,7 +6,7 @@ declare(strict_types=1);
  *
  *	@package	sync*gw
  *	@subpackage	Core
- *	@copyright	(c) 2008 - 2024 Florian Daeumling, Germany. All right reserved
+ *	@copyright	(c) 2008 - 2025 Florian Daeumling, Germany. All right reserved
  * 	@license 	LGPL-3.0-or-later
  */
 
@@ -339,7 +339,7 @@ class Config {
 	 *
 	 * 	@param	- Optional configuration array()
 	 */
-	public function loadConf(array $conf = null): void {
+	public function loadConf(?array $conf = null): void {
 
 		if (!$conf) {
 

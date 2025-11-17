@@ -174,7 +174,7 @@ class Trace extends XML {
      * 	@param  - used for forced trace only - BODY
      *
      */
-    public function Start(array $header = [], string $body = null): void {
+    public function Start(array $header = [], ?string $body = null): void {
 
 		$cnf   = Config::getInstance();
        	$http  = HTTP::getInstance();

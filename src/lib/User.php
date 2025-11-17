@@ -163,7 +163,7 @@ class User extends XML {
 	 * 	@param	- Device name
 	 * 	@return	- true = Ok; false =E rror
 	 */
-	public function Login(string $uid = null, string $upw = null, ?string $devname = null): bool {
+	public function Login(?string $uid = null, ?string $upw = null, ?string $devname = null): bool {
 
 		// could we catch user id and password?
 		if (!$uid || !$upw)

@@ -138,7 +138,7 @@ class XML {
 	 * 	@param 	- Optional: Object to copy data from
 	 * 	@param	- true = Copy from top (default); false = Copy from current position
 	 */
-	public function __construct(XML $obj = null, bool $top = true) {
+	public function __construct(?XML $obj = null, bool $top = true) {
 
 		$this->_doc = new \DOMDocument('1.0', 'UTF-8');
 

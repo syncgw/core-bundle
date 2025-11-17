@@ -115,7 +115,7 @@ class docMail extends docHandler {
 	 * 	@param	- Optional MIME type [ Name, Version ]
 	 * 	@return	- true = Ok; false = Error
 	 */
-	public function export(XML &$ext, XML &$int, array $mime = null): bool {
+	public function export(XML &$ext, XML &$int, ?array $mime = null): bool {
 
 		if (!class_exists($class = 'syncgw\\activesync\\masHandler'))
 			return false;

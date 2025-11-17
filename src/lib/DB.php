@@ -571,7 +571,7 @@ class DB implements DBintHandler, DBextHandler {
 	 * 	@param 	- Create new empty record
 	 * 	@return - New document skeleton
 	 */
-	public function mkDoc(int $hid, array $opts = null, bool $create = false): XML {
+	public function mkDoc(int $hid, ?array $opts = null, bool $create = false): XML {
 
 		if (!is_array($opts))
 			$opts = [];
