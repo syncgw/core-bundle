@@ -6,7 +6,7 @@ declare(strict_types=1);
  *
  *	@package	sync*gw
  *	@subpackage	Core
- *	@copyright	(c) 2008 - 2025 Florian Daeumling, Germany. All right reserved
+ *	@copyright	(c) 2008 - 2026 Florian Daeumling, Germany. All right reserved
  * 	@license 	LGPL-3.0-or-later
  */
 
@@ -14,7 +14,7 @@ namespace syncgw\lib;
 
 class Config {
 
-	const GITVER			= '9.19.86';					// sync*gw version
+	const GITVER			= '9.19.88';					// sync*gw version (check doc_bundle/Changes.md)
 
 	// configuration paremeters
 	const ROOT				= 'RootDirectry';				// root directory of syncgw project
@@ -191,7 +191,7 @@ class Config {
 		    // 6 VAL_SAVE: 1 - Save to .INI file
 			self::$_obj->_conf = [
 
-				self::ROOT				=> [ 0, $_SERVER['DOCUMENT_ROOT'].'/vendor/syncgw/', [], null, [], [], 0		],
+				self::ROOT				=> [ 0, 'vendor/syncgw/', [], null, [], [], 0									],
 				self::ADMPW				=> [ 0, null, [], null, [], [], 1                                               ],
 				self::CRONJOB			=> [ 0, 'N', [ 'Y', 'N' ], 'CRONJOB', [], [], 1	                                ],
 				self::TRACE				=> [ 1, self::TRACE_OFF, [ self::TRACE_OFF, self::TRACE_ON, self::TRACE_FORCE,
@@ -257,7 +257,7 @@ class Config {
 			    self::DB_RSIZE         	=> [ 1, 10485760, [], 'DB_RSIZE', [], [], 1                                     ],
 
 				// "RoundCube" handler parameter
-				self::RC_DIR			=> [ 0, '.', [], null, [], [], 1                                                ],
+				self::RC_DIR			=> [ 0, null, [], null, [], [], 1                                                ],
 
 				// "PHPMAILER" handler parameter
 				self::MAILER_ERR		=> [ 1, 0, [ 0, 1 ], '', [], [], 1                               				],
@@ -280,10 +280,11 @@ class Config {
 			];
 
 			// set config file name
-			if (file_exists($_SERVER['DOCUMENT_ROOT'].'/config/defaults.inc.php'))
-				self::$_obj->Path = $_SERVER['DOCUMENT_ROOT'].'/config/syncgw.php';
+			// check for RoundCube installation
+			if (file_exists($_SERVER['DOCUMENT_ROOT'].'/../config'))
+				self::$_obj->Path = $_SERVER['DOCUMENT_ROOT'].'/../config/syncgw.cnf.php';
 			else
-				self::$_obj->Path = $_SERVER['DOCUMENT_ROOT'].'/syncgw.php';
+				self::$_obj->Path = $_SERVER['DOCUMENT_ROOT'].'/syncgw.cnf.php';
 
 			// set temp. directory
 			if (!strlen(self::$_obj->_conf[self::TMP_DIR][self::VAL_DEF] = ini_get('upload_tmp_dir')))

@@ -6,7 +6,7 @@ declare(strict_types=1);
  *
  *	@package	sync*gw
  *	@subpackage	Core
- *	@copyright	(c) 2008 - 2025 Florian Daeumling, Germany. All right reserved
+ *	@copyright	(c) 2008 - 2026 Florian Daeumling, Germany. All right reserved
  * 	@license 	LGPL-3.0-or-later
  */
 
@@ -28,7 +28,6 @@ class ErrorHandler {
             E_USER_WARNING      => 'E_USER_WARNING',
             E_USER_NOTICE       => 'E_USER_NOTICE',
 		    E_USER_DEPRECATED   => 'E_USER_DEPRECATED',
-			E_STRICT            => 'E_STRICT',
 			E_RECOVERABLE_ERROR => 'E_RECOVERABLE_ERROR',
             E_DEPRECATED        => 'E_DEPRECATED',
     ];
@@ -322,7 +321,7 @@ class ErrorHandler {
 		else
 			$msg = sprintf($msgs[11602], $no);
 
-		trigger_error($msg, E_USER_ERROR);
+		exit($msg);
 	}
 
 	/**

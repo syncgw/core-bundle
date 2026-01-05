@@ -6,7 +6,7 @@ declare(strict_types=1);
  *
  *	@package	sync*gw
  *	@subpackage	Core
- *	@copyright	(c) 2008 - 2025 Florian Daeumling, Germany. All right reserved
+ *	@copyright	(c) 2008 - 2026 Florian Daeumling, Germany. All right reserved
  * 	@license 	LGPL-3.0-or-later
  */
 
@@ -144,7 +144,7 @@ class Attachment extends XML {
 	 *  @param  - Optional imap encoding type
 	 *  @return - Attachment name or null
 	 */
-	function create(string $bin, ?string $mime = null, int $enc = ENCBINARY): ?string {
+	function create(string $bin, ?string $mime = null, int $enc = \ENCBINARY): ?string {
 
 	    $db  = DB::getInstance();
         $max = Config::getInstance()->getVar(Config::DB_RSIZE);
@@ -264,7 +264,7 @@ class Attachment extends XML {
 	 *  @param  - Optional imap encoding type
 	 *  @return - [ Attachment record ID, true = New; false = Existing record ]
 	 */
-	private function _load(bool $mod, string $bin, ?string $mime = null, int $enc = ENCBINARY): array {
+	private function _load(bool $mod, string $bin, ?string $mime = null, int $enc = \ENCBINARY): array {
 
 		$db = DB::getInstance();
 		$rc = true;

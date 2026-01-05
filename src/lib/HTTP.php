@@ -5,7 +5,7 @@ declare(strict_types=1);
  * 	Connection handler class
  *
  *	@package	sync*gw
- *	@copyright	(c) 2008 - 2025 Florian Daeumling, Germany. All right reserved
+ *	@copyright	(c) 2008 - 2026 Florian Daeumling, Germany. All right reserved
  * 	@license 	LGPL-3.0-or-later
  *
  */
@@ -145,7 +145,7 @@ class HTTP {
 	 * 	@param	- Class object or null
 	 *  @Param  - Function name
 	 */
-	public function catchHTTP(string $func, ?string $class = null): void {
+	public function catchHTTP(string $func, ?object $class = null): void {
 
 		$c = $class ? get_class($class) : '';
 		$k = $c.':'.$func;
