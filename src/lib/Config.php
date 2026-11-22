@@ -7,14 +7,14 @@ declare(strict_types=1);
  *	@package	sync*gw
  *	@subpackage	Core
  *	@copyright	(c) 2008 - 2026 Florian Daeumling, Germany. All right reserved
- * 	@license 	LGPL-3.0-or-later
+ * 	@license 	https://www.gnu.org/licenses/gpl-3.0.en.html
  */
 
 namespace syncgw\lib;
 
 class Config {
 
-	const GITVER			= '9.19.88';					// sync*gw version (check doc_bundle/Changes.md)
+	const GITVER			= '9.19.89';					// sync*gw version (check doc_bundle/Changes.md)
 
 	// configuration paremeters
 	const ROOT				= 'RootDirectry';				// root directory of syncgw project

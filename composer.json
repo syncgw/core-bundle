@@ -1,17 +1,21 @@
 {
 	"name" : "syncgw/core-bundle",
+	"type" : "syncgw-bundle",
 	"description" : "sync*gw core bundle.",
+	"homepage" : "https://github.com/syncgw/core-bundle",
 	"repositories" : [{
 			"type" : "composer",
 			"url" : "https://repo.packagist.org"
 		}
 	],
-	"type" : "syncgw-bundle",
-	"license" : "LGPL-3.0-or-later",
-	"homepage" : "https://github.com/syncgw/core-bundle",
+	"keywords" : [
+		"syncgw",
+		"core"
+	],
+	"license" : "https://www.gnu.org/licenses/gpl-3.0.en.html",
 	"authors" : [{
-			"name" : "Florian Däumling",
-			"homepage" : "https://github.com/toteph42"
+			"name" : "Florian Daeumling",
+			"role" : "Author"
 		}
 	],
 	"funding" : [{
@@ -19,6 +23,11 @@
 			"url" : "https://www.paypal.com/donate/?hosted_button_id=DS6VK49NAFHEQ"
 		}
 	],
+	"support" : {
+		"issues" : "https://github.com/syncgw/syncgw/issues",
+		"docs" : "https://github.com/syncgw/doc-bundle",
+		"email" : "syncgw@wb28.de"
+	},
 	"require" : {
 		"php" : ">=8.1",
 		"symfony/filesystem" : ">=6.3.1"
@@ -27,10 +36,5 @@
 		"psr-4" : {
 			"syncgw\\" : "src/"
 		}
-	},
-	"support" : {
-		"issues" : "https://github.com/syncgw/syncgw/issues",
-		"source" : "https://github.com/syncgw/core-bundle",
-		"docs" : "https://github.com/syncgw/core-bundle"
 	}
 }
